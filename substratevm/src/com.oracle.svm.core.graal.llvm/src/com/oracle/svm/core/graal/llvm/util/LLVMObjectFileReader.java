@@ -220,6 +220,8 @@ public class LLVMObjectFileReader {
         }
 
         public int getOffset(String methodName) {
+            System.out.println(methodName);
+            System.out.println(SYMBOL_PREFIX);
             return symbolToOffset.get(SYMBOL_PREFIX + methodName);
         }
 

@@ -212,6 +212,20 @@ public class LLVMNativeImageCodeCache extends NativeImageCodeCache {
 
     private void llvmOptimize(DebugContext debug, String outputPath, String inputPath) {
         List<String> args = new ArrayList<>();
+args.add("-tti");
+args.add("-targetlibinfo");
+args.add("-assumption-cache-tracker");
+args.add("-profile-summary-info");
+args.add("-popcorn-compat");
+args.add("-domtree");
+args.add("-loops");
+args.add("-looppaths");
+args.add("-scalar-evolution");
+args.add("-select-migration-points");
+args.add("--name-string-literals");
+args.add("--static-var-sections");
+args.add("-forceattrs");
+args.add("-basiccg");
         if (LLVMOptions.BitcodeOptimizations.getValue()) {
             /*
              * This runs LLVM's bitcode optimizations in addition to the Graal optimizations.
@@ -245,6 +259,10 @@ public class LLVMNativeImageCodeCache extends NativeImageCodeCache {
 
     private void llvmCompile(DebugContext debug, String outputPath, String inputPath) {
         List<String> args = new ArrayList<>();
+args.add("--popcorn-instrument=migration");
+args.add("-optimize-regalloc");
+args.add("-fast-isel=false");
+args.add("-disable-machine-cse");
         args.add("-relocation-model=pic");
         /*
          * Makes sure that unreachable instructions get emitted into the machine code. This prevents

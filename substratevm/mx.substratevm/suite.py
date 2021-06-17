@@ -1173,7 +1173,7 @@ suite = {
                 "sdk:LLVM_TOOLCHAIN"
             ],
             "javaProperties": {
-                "llvm.bin.dir": "<path:LLVM_TOOLCHAIN>/bin/",
+                "llvm.bin.dir": "/usr/local/popcorn/bin/",
             },
             "exclude": [
                 "LLVM_WRAPPER_SHADOWED",

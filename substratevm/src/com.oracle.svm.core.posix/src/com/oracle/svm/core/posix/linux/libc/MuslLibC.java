@@ -53,7 +53,8 @@ public class MuslLibC implements LibCBase {
     @Override
     public List<String> getAdditionalQueryCodeCompilerOptions() {
         /* Avoid the dependency to muslc for builds cross compiling to muslc. */
-        return Collections.singletonList("--static");
+        //return Collections.singletonList("--static");
+return List.of("--static", "-O3", "-popcorn-alignment");
     }
 
     @Override
